@@ -26,7 +26,7 @@ public class MemberController {
         return memberRepository.save(Member.builder()
                 .email(user.get("email"))
                 .password(passwordEncoder.encode(user.get("password")))
-                .roles(Collections.singletonList("ROLE_USER")) // 최초 가입시 USER 로 설정
+                .roles(Collections.singletonList("ROLE_USER")) //최초 가입시 USER 로 설정
                 .build()).getId();
     }
 

@@ -31,11 +31,13 @@ public class Member implements UserDetails {
     @Column(length = 300, nullable = false)
     private String password;
 
-    @ElementCollection(fetch = FetchType.EAGER)
+
+    @ElementCollection(fetch = FetchType.EAGER) //roles 컬렉션
     @Builder.Default
     private List<String> roles = new ArrayList<>();
 
-    @Override
+
+    @Override   //사용자의 권한 목록 리턴
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return this.roles.stream()
                 .map(SimpleGrantedAuthority::new)
