@@ -18,7 +18,6 @@ public class MemberService {
     private final JwtTokenProvider jwtTokenProvider;
     private final MemberRepository memberRepository;
 
-
     public Long join(MemberDto memberDto){
         Member member = Member.builder()
                 .email(memberDto.getEmail())

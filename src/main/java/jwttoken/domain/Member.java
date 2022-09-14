@@ -31,7 +31,6 @@ public class Member implements UserDetails {
     @Column(length = 300, nullable = false)
     private String password;
 
-
     @ElementCollection(fetch = FetchType.EAGER) //roles 컬렉션
     @Builder.Default
     private List<String> roles = new ArrayList<>();
@@ -68,5 +67,4 @@ public class Member implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
-
 }
