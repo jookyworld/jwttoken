@@ -1,4 +1,4 @@
-package jwttoken.jwttoken.domain;
+package jwttoken.domain;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

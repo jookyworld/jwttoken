@@ -1,6 +1,6 @@
-package jwttoken.jwttoken.service;
+package jwttoken.service;
 
-import jwttoken.jwttoken.domain.MemberRepository;
+import jwttoken.domain.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

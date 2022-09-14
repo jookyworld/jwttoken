@@ -1,7 +1,7 @@
-package jwttoken.jwttoken.config;
+package jwttoken.config;
 
-import jwttoken.jwttoken.token.JwtAuthenticationFilter;
-import jwttoken.jwttoken.token.JwtTokenProvider;
+import jwttoken.token.JwtAuthenticationFilter;
+import jwttoken.token.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -19,13 +19,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final JwtTokenProvider jwtTokenProvider;
 
-    //암호화에 필요한 Bean 등록
+    //암호화에 필요한 PasswordEncoder Bean 등록
     @Bean
     public PasswordEncoder passwordEncoder() {
         return PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
 
-    // authenticationManager Bean
+    //authenticationManager Bean 등록
     @Bean
     @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {
@@ -49,7 +49,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and()
 
+                // JwtAuthenticationFilter를 UsernamePasswordAuthenticationFilter 전에 넣는다
                 .addFilterBefore(new JwtAuthenticationFilter(jwtTokenProvider), UsernamePasswordAuthenticationFilter.class);
-        // JwtAuthenticationFilter를 UsernamePasswordAuthenticationFilter 전에 넣는다
     }
 }

@@ -1,4 +1,4 @@
-package jwttoken.jwttoken.domain;
+package jwttoken.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
