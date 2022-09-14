@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 @RequiredArgsConstructor
 @RestController
 public class MemberController {
@@ -15,7 +17,7 @@ public class MemberController {
 
     // 회원가입 API
     @PostMapping("/join")
-    public Long join(@RequestBody MemberDto memberDto) {
+    public Long join(@Valid @RequestBody MemberDto memberDto) {
         return memberService.join(memberDto);
     }
 

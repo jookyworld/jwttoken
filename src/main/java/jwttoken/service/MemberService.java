@@ -7,6 +7,7 @@ import jwttoken.token.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collections;
 
@@ -18,6 +19,7 @@ public class MemberService {
     private final JwtTokenProvider jwtTokenProvider;
     private final MemberRepository memberRepository;
 
+    @Transactional
     public Long join(MemberDto memberDto){
         Member member = Member.builder()
                 .email(memberDto.getEmail())
@@ -28,6 +30,7 @@ public class MemberService {
         return memberRepository.save(member).getId();
     }
 
+    @Transactional
     public String login(MemberDto memberDto){
         Member member = memberRepository.findByEmail(memberDto.getEmail())
                 .orElseThrow(() -> new IllegalArgumentException("가입되지 않은 E-MAIL 입니다."));
