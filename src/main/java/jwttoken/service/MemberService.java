@@ -19,7 +19,6 @@ public class MemberService {
     private final MemberRepository memberRepository;
 
 
-
     public Long join(MemberDto memberDto){
         Member member = Member.builder()
                 .email(memberDto.getEmail())
@@ -30,8 +29,13 @@ public class MemberService {
         return memberRepository.save(member).getId();
     }
 
-//    public String login(){
-//
-//    }
-
+    public String login(MemberDto memberDto){
+        Member member = memberRepository.findByEmail(memberDto.getEmail())
+                .orElseThrow(() -> new IllegalArgumentException("가입되지 않은 E-MAIL 입니다."));
+        if (!passwordEncoder.matches(memberDto.getPassword(), member.getPassword())) {
+            throw new IllegalArgumentException("잘못된 비밀번호입니다.");
+        }
+        // 로그인에 성공하면 email, roles 로 토큰 생성 후 반환
+        return jwtTokenProvider.createToken(member.getUsername(), member.getRoles());
+    }
 }

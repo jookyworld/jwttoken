@@ -49,7 +49,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and()
 
-                // JwtAuthenticationFilter를 UsernamePasswordAuthenticationFilter 전에 넣는다
+                // JwtAuthenticationFilter를 먼저 적용
                 .addFilterBefore(new JwtAuthenticationFilter(jwtTokenProvider), UsernamePasswordAuthenticationFilter.class);
     }
 }
