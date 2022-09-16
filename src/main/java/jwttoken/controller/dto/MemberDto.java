@@ -13,7 +13,7 @@ public class MemberDto {
     private String email;
 
     @NotNull
-    @Size(min = 8, max = 300)
+    @Size(min = 3, max = 300)
     private String password;
 
 }

@@ -12,4 +12,14 @@ public class IndexController {
         return "index";
     }
 
+    @GetMapping("/index/login")
+    public String login(){
+        return "login";
+    }
+
+    @GetMapping("/index/join")
+    public String join(){
+        return "join";
+    }
+
 }
