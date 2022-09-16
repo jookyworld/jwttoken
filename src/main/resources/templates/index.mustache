@@ -10,7 +10,11 @@
 <hr>
 
 <a href="/index/login" role="button"><button>로그인</button></a>
-<a href="/index/join" role="button"><button>회원가입</button></a>
+<a href="/index/join" role="button"><button>회원가입</button></a><br>
+
+{{#countMember}}
+    현재 가입자 수는 {{countMember}}명 입니다.
+{{/countMember}}
 
 </body>
 </html>

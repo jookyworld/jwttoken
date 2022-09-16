@@ -40,4 +40,10 @@ public class MemberService {
         // 로그인에 성공하면 email, roles 로 토큰 생성 후 반환
         return jwtTokenProvider.createToken(member.getUsername(), member.getRoles());
     }
+
+    @Transactional(readOnly = true)
+    public Long countAllMembers(){
+        return memberRepository.count();
+    }
+
 }
