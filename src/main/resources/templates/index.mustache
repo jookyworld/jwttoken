@@ -6,15 +6,22 @@
     <link rel="icon" href="/img/dog.ico" sizes="192x192">
 </head>
 <body>
+
+<div style="text-align:center">
 <h1>메인 화면</h1>
-<hr>
 
 <a href="/index/login" role="button"><button>로그인</button></a>
 <a href="/index/join" role="button"><button>회원가입</button></a><br>
 
 {{#countMember}}
+
+{{/countMember}}
+
+
+{{#countMember}}
     현재 가입자 수는 {{countMember}}명 입니다.
 {{/countMember}}
+</div>
 
 </body>
 </html>
